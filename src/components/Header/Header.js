@@ -1,11 +1,11 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import MenuIcon from "@material-ui/icons/Menu"
-import MonetizationOnSharpIcon from "@material-ui/icons/MonetizationOnSharp"
-import { Toolbar } from "react-onsenui"
-import ArrowBackIcon from "@material-ui/icons/ArrowBack"
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz"
-import Sidemenu from "../Sidemenu/Sidemenu"
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import MenuIcon from '@material-ui/icons/Menu'
+import MonetizationOnSharpIcon from '@material-ui/icons/MonetizationOnSharp'
+import { Toolbar } from 'react-onsenui'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import Sidemenu from '../Sidemenu/Sidemenu'
 
 class Header extends Component {
   constructor(props) {
@@ -15,6 +15,12 @@ class Header extends Component {
       headerTitle: this.props.headerTitle,
       isMenuOpen: false
     }
+  }
+
+  componentWillReceiveProps = nextProps => {
+    this.setState({
+      headerTitle: nextProps.headerTitle
+    })
   }
 
   showMenu = () => {
@@ -42,7 +48,7 @@ class Header extends Component {
       return (
         <Toolbar>
           <div className="left center-xy">
-            <Link to={"/Quizes"}>
+            <Link to={"/Quizzes"}>
               <ArrowBackIcon className="txt-white center-xy"/>
             </Link>
           </div>
@@ -68,4 +74,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Header

@@ -1,14 +1,31 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import { slide as Menu } from "react-burger-menu"
-import MonetizationOnSharpIcon from "@material-ui/icons/MonetizationOnSharp"
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { slide as Menu } from 'react-burger-menu'
+import MonetizationOnSharpIcon from '@material-ui/icons/MonetizationOnSharp'
+import Cookies from 'universal-cookie'
+import { Redirect } from 'react-router-dom'
 
 class Sidemenu extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      redirect: false
+    }
+  }
+
+  logout = () => {
+    const cookies = new Cookies()
+    cookies.remove('token', { path: '/' })
+    this.setState({
+      redirect: true
+    })
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={{ pathname: '/' }} />
+    }
+
     return (
       <Menu onClose={this.props.showMenu} burgerButtonClassName={this.props.isMenuOpen ? 'd-block' : 'd-none'} isOpen={this.props.isMenuOpen} className="bg-blue-dark z-index-master" width={"100%"}>
         <div className="w-100 h-100">
@@ -26,46 +43,46 @@ class Sidemenu extends Component {
 
           <section className="h-60 p-35px b-box center-y">
             <div>
-              <div className="flex menu-overlay">
+              <Link className="flex menu-overlay" to={"/Quizzes"}>
                 <div className="center-xy mr-10px">
                   <MonetizationOnSharpIcon className="txt-white" />
                 </div>
-                <Link className="center-xy py-15px rubik-regular txt-white" to={"/Quizes"}>Quizes</Link>
-              </div>
-              <div className="flex menu-overlay">
+                <div className="center-xy py-15px rubik-regular txt-white">Quizzes</div>
+              </Link>
+              <Link className="flex menu-overlay" to={"/Leaderboard"}>
                 <div className="center-xy mr-10px">
                   <MonetizationOnSharpIcon className="txt-white" />
                 </div>
-                <Link className="center-xy py-15px rubik-regular txt-white" to={"/Leaderboard"}>Leadboard</Link>
-              </div>
-              <div className="flex menu-overlay py-10px">
+                <div className="center-xy py-15px rubik-regular txt-white">Leadboard</div>
+              </Link>
+              <Link className="flex menu-overlay py-10px" to={"/Notifications"}>
                 <div className="center-xy mr-10px">
                   <MonetizationOnSharpIcon className="txt-white" />
                 </div>
-                <Link className="center-xy py-15px rubik-regular txt-white" to={"/Notifications"}>Notifications</Link>
-              </div>
-              <div className="flex menu-overlay">
+                <div className="center-xy py-15px rubik-regular txt-white">Notifications</div>
+              </Link>
+              <Link className="flex menu-overlay" to={"/EarnCoins"}>
                 <div className="center-xy mr-10px">
                   <MonetizationOnSharpIcon className="txt-white" />
                 </div>
-                <Link className="center-xy py-15px rubik-regular txt-white" to={"/EarnCoins"}>Earn coins</Link>
-              </div>
+                <div className="center-xy py-15px rubik-regular txt-white">Earn coins</div>
+              </Link>
             </div>
           </section>
 
           <section className="h-10 row-end px-35px b-box">
             <div className="flex w-100 b-top py-10px">
-              <div className="flex w-50 menu-overlay py-10px b-right">
+              <Link className="flex w-50 menu-overlay py-10px b-right" to={"/Settings"}>
                 <div className="center-y mr-10px">
                   <MonetizationOnSharpIcon className="txt-gray-light" />
                 </div>
-                <Link className="center-y txt-gray-light" to={"/Settings"}>Settings</Link>
-              </div>
-              <div className="flex w-50 menu-overlay py-10px right">
+                <p className="center-y txt-gray-light" >Settings</p>
+              </Link>
+              <div className="flex w-50 menu-overlay py-10px right hover-btn" onClick={this.logout}>
                 <div className="center-y mr-10px">
                   <MonetizationOnSharpIcon className="txt-gray-light" />
                 </div>
-                <Link className="center-y txt-gray-light rubik-regular" to={"/"} >Log Out</Link>
+                <p className="center-y txt-gray-light rubik-regular">Log Out</p>
               </div>
             </div>
             {/* <Button className="hover-btn fs-15px" modifier="large--cta">Iniciar sesión con facebook</Button> */}

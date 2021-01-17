@@ -1,7 +1,11 @@
 :root {
   --main-txt-color: rgb(255, 255, 255);
   --txt-gray-light:  rgb(119, 124, 142);
-  --bg-blue-dark: rgb(60, 67, 91);
+  --bg-blue-dark: rgb(14, 42, 71);
+  --bg-blue-dark-1: rgb(12, 40, 73);
+  --bg-toast-success: rgba(40, 167, 69, 0.8);
+  --bg-toast-warning: rgba(255, 193, 7, 0.8);
+  --bg-toast-danger: rgba(220, 53, 59, 0.8);
 }
 
 /* Setting tags */
@@ -11,8 +15,6 @@ body, html {
   padding: 0;
   box-sizing: border-box;
   font-family: rubik-light, sans-serif;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }
 
 a, button {
@@ -30,7 +32,7 @@ input {
 }
 
 ons-toolbar {
-  background-color: var(--bg-blue-dark) !important;
+  background-color: var(--bg-blue-dark-1) !important;
 }
 
 nav * {
@@ -128,6 +130,14 @@ button#react-burger-cross-btn::before {
   text-align: center;
 }
 
+.line-h-20px {
+  line-height: 20px !important;
+}
+
+.no-white-space {
+  white-space: normal !important;
+}
+
 .overflow-auto {
   overflow: auto;
   scrollbar-width: none; /* Firefox */
@@ -138,11 +148,11 @@ button#react-burger-cross-btn::before {
   display: none;  /* Safari and Chrome */
 }
 
-.position-absolute {
+.p-absolute {
   position: absolute;
 }
 
-.position-relative {
+.p-relative {
   position: relative;
 }
 
@@ -154,6 +164,10 @@ button#react-burger-cross-btn::before {
 
 .w-100 {
   width: 100%;
+}
+
+.w-90 {
+  width: 90%;
 }
 
 .w-85 {
@@ -309,6 +323,10 @@ button#react-burger-cross-btn::before {
   padding: 8px;
 }
 
+.p-15px {
+  padding: 15px
+}
+
 .py-15px {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -405,12 +423,16 @@ button#react-burger-cross-btn::before {
   background: none !important;
 }
 
-.border-1px {
-  border: 1px solid !important;
+.bg-success {
+  background-color: var(--bg-toast-success) !important;
 }
 
-.border-l-3px {
-  border-left: 3px solid #25a6d9 !important;
+.bg-warning {
+  background-color: var(--bg-toast-warning) !important;
+}
+
+.bg-danger {
+  background-color: var(--bg-toast-danger) !important;
 }
 
 /* Fonts */
@@ -437,6 +459,23 @@ button#react-burger-cross-btn::before {
 
 .fs-15px {
   font-size: 15px !important;
+}
+
+/* Text styles */
+
+.txt-normalize {
+  text-transform: lowercase;
+}
+
+.txt-normalize::first-letter {
+  text-transform: uppercase;
+}
+
+.selected {
+  color: white;
+  background: linear-gradient(to right, white, white) no-repeat;
+  background-size: 60% 2px;
+  background-position: left bottom;
 }
 
 /* Borders and rounds */
@@ -474,6 +513,14 @@ button#react-burger-cross-btn::before {
   border: 0 !important;
 }
 
+.border-1px {
+  border: 1px solid !important;
+}
+
+.border-l-3px {
+  border-left: 3px solid #25a6d9 !important;
+}
+
 /* pseudoselector effects */
 
 .hover-link:hover {
@@ -502,4 +549,11 @@ button#react-burger-cross-btn::before {
 .menu-overlay:hover {
   opacity: 0.2;
   background-image: linear-gradient(to right, #000000, #1a1418, #2a222b, #363142, #3c435b);
+}
+
+.eye {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
 }

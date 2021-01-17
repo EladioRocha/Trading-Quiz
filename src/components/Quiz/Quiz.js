@@ -1,13 +1,13 @@
-import React from "react"
-import { Card, Button } from "react-onsenui"
-import { Link } from "react-router-dom"
+import React from 'react'
+import { Card, Button } from 'react-onsenui'
+import { Link } from 'react-router-dom'
 
 const Quiz = props => {
   return (
     <ons-col width="85%">
-      <Card className="flex-100 mx-10px p-0">
+      <Card className="round-30px flex-100 mx-10px p-0 m-0 h-100">
         <div className="w-100 center-x">
-          <img className="w-100" src={props.image} height="200"></img>
+          <img className="round-30px w-100" src={props.image} height="200"></img>
         </div>
         <div className="w-100 center-x mt-35px">
           <h3 className="m-0 p-0 rubik-regular txt-gray-dark">{props.title}</h3>
@@ -17,8 +17,8 @@ const Quiz = props => {
         </div>
         <div className="py-35px center-x">
           <div className="w-80">
-            <Link to={"/QuizGame"}>
-              <Button className="hover-btn round-30px fs-15px" modifier="large--cta">Empezar Quiz</Button>
+            <Link to={`/QuizGame/${props.quizId}`}>
+              <Button className="hover-btn round-30px fs-15px bg-success" modifier="large--cta">Empezar Quiz</Button>
             </Link>
           </div>
         </div>
