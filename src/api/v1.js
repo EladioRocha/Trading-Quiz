@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie'
 
 import { handleResponse } from './handleResponse'
 
-const BASE_URL = 'http://192.168.1.70:3000'
+const BASE_URL = 'http://trading-quiz-backend.herokuapp.com'
 
 /** USER **/
 export async function APICreateUser(user) {
