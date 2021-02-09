@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Cookies from 'universal-cookie'
 import Header from '../Header/Header'
 import Notification from '../Notification/Notification'
 import { APIGetUnviewedNotifications, APICleanViewedNotifications } from '../../api/v1'
@@ -6,8 +7,20 @@ import { APIGetUnviewedNotifications, APICleanViewedNotifications } from '../../
 class Notifications extends Component {
   constructor() {
     super()
+
+    this.cookies = new Cookies()
     this.state = {
-      notifications: []
+      notifications: [],
+      text: {
+        header: {
+          es: 'Notificaciones',
+          en: 'Notifications'
+        },
+        status: {
+          es: 'Sin leer',
+          en: 'Unviewed'
+        }
+      }
     }
   }
 
@@ -33,10 +46,10 @@ class Notifications extends Component {
   render() {
     return (
       <main className="w-100 h-100 flex wrap center-x bg-blue-dark">
-        <Header typeMenu="sidemenu" headerTitle={'Notifications'} />
+        <Header typeMenu="sidemenu" headerTitle={this.state.text.header[this.cookies.get('iso')]} />
         <div className="w-100 h-5">
           <ons-col width="100%">
-            <p className="w-100 center-x txt-gray rubik-bold fs-13px">{this.state.notifications.length} Unviewed</p>
+            <p className="w-100 center-x txt-gray rubik-bold fs-13px">{this.state.notifications.length} {this.state.text.status[this.cookies.get('iso')]}</p>
           </ons-col>
         </div>
         <section className="w-85 h-75 wrap overflow-auto center-xy">
@@ -44,8 +57,6 @@ class Notifications extends Component {
             <div className="w-100 h-90 overflow-auto">
               {this.renderNotifications()}
               {/* <Notification image="https://picsum.photos/200/300" title="New Functionality" date="Yesterday" unread={true} /> */}
-              {/* <Notification image="https://picsum.photos/200/300" title="New Quiz Available" date="Last Week" unread={false} /> */}
-              {/* <Notification image="https://picsum.photos/200/300" title="New Badge Unlocked" date="Last Month" unread={false} /> */}
             </div>
           </div>
         </section>

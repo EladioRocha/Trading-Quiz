@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Cookies from 'universal-cookie'
 import { Button, Toolbar } from 'react-onsenui'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import MonetizationOnSharpIcon from '@material-ui/icons/MonetizationOnSharp'
@@ -9,7 +10,8 @@ import { APIGetQuestionsQuiz, APIResultQuiz } from '../../api/v1'
 class QuizGame extends Component {
   constructor(props) {
     super(props)
-
+    
+    this.cookies = new Cookies()
     this.state = {
       title: '',
       questions: [],
@@ -20,7 +22,13 @@ class QuizGame extends Component {
       isPlayingTimer: true,
       savedResult: false,
       redirect: false,
-      totalQuestions: 0 
+      totalQuestions: 0,
+      text: {
+        questionsText: {
+          es: 'Pregunta',
+          en: 'Question'
+        }
+      }
     }
   }
 
@@ -119,24 +127,24 @@ class QuizGame extends Component {
 
     return (
       <main className="w-100 h-100 flex wrap center-x bg-blue-dark">
-        <Header typeMenu="back" headerTitle={this.state.title} />
+        <Header typeMenu="back" headerTitle={this.state.title[this.cookies.get('iso')]} />
         <section className="w-100 h-90 wrap center-x">
           <div className="w-100 h-5">
             <ons-col width="100%">
-              <p className="w-100 center-x txt-gray rubik-bold fs-13px">Question {this.state.totalQuestions - this.state.questions.length + 1}/{this.state.totalQuestions}</p>
+              <p className="w-100 center-x txt-gray rubik-bold fs-13px">{this.state.text.questionsText[this.cookies.get('iso')]} {this.state.totalQuestions - this.state.questions.length + 1}/{this.state.totalQuestions}</p>
             </ons-col>
           </div>
           <div className="w-100 h-85 center-x">
-            <div className="w-85 mt-10px">
+            <div className="w-85 overflow-auto h-auto mt-10px mb-10px">
               <ons-col width={"100%"}>
                 <h3 className="txt-white txt-center txt-normalize fs-15px rubik-bold">{this.state.currentQuestion}</h3>
               </ons-col>
-              <div>
+              <div className="h-auto pb-35px">
                 <div>
                   {
                     this.state.currentAnswers.map(({ _id, answer }) => (
                       <Button key={_id} className="no-white-space center-xy line-h-20px bg-none border-1px hover-btn round-10px mt-10px" modifier="large--cta" onClick={() => this.handleSelectedAnswer(_id)}>
-                        <p className="fs-14px rubik-light txt-wrap txt-normalize m-0 p-0">{answer.en}</p>
+                        <p className="fs-14px rubik-light txt-wrap txt-normalize m-0 p-0">{answer[this.cookies.get('iso')]}</p>
                       </Button>
                     ))
                   }
@@ -157,8 +165,8 @@ class QuizGame extends Component {
                         key={this.state.currentQuestionId}
                         size={75}
                         strokeWidth={10}
-                        isPlaying={!this.state.isPlayingTimer}
-                        duration={10}
+                        isPlaying={this.state.isPlayingTimer}
+                        duration={1000}
                         colors={[["#64ca31"]]}
                         onComplete={this.handleOnCompleteTimer}
                       >

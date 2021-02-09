@@ -11,7 +11,7 @@ class ProtectedRoute extends React.Component {
     return !isAuthenticated ? (
       <Component />
     ) : (
-        <Redirect to={{ pathname: '/Quizzes' }} />
+        <Redirect to={{ pathname: '/Home' }} />
       )
   }
 }

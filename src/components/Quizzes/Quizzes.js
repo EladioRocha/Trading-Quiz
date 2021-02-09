@@ -1,24 +1,32 @@
 import React, { Component } from 'react'
+import Cookies from 'universal-cookie'
 import Header from '../Header/Header'
 import Quiz from '../Quiz/Quiz'
 import { APIGetQuizzes } from '../../api/v1'
 
-import 'onsenui/css/onsenui.css'
-import 'onsenui/css/onsen-css-components.css'
-import '../.././index.css'
-
 class Quizes extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+
+    this.cookies = new Cookies()
     this.state = {
       quizzes: [],
-      quizzesElements: []
+      text: {
+        header: {
+          es: 'Cuestionarios',
+          en: 'Quizzes'
+        },
+        buttonStart: {
+          es: 'Empezar cuestionario',
+          en: 'Start quiz'
+        }
+      }
     }
     this._ref = React.createRef();
   }
 
   componentDidMount = async () => {
-    const response = await APIGetQuizzes()
+    const response = await APIGetQuizzes(this.props.params.type)
     this.setState({
       quizzes: response.data.quizzes
     })
@@ -28,42 +36,26 @@ class Quizes extends Component {
     const elements = []
     for (const quiz of this.state.quizzes) {
       elements.push(
-        <Quiz key={quiz._id} quizId={quiz._id} image="https://picsum.photos/200/300" title={quiz.title} description={quiz.description} coins={quiz.coins} />
+        <Quiz 
+          key={quiz._id} 
+          quizId={quiz._id} 
+          image="https://picsum.photos/200/300" 
+          title={quiz.title[this.cookies.get('iso')]}
+          description={quiz.description[this.cookies.get('iso')]} 
+          coins={quiz.coins} 
+          buttonText={this.state.text.buttonStart[this.cookies.get('iso')]}
+          />
       )
     }
-
     return elements
   }
 
   render() {
     return (
       <main className="w-100 h-100 flex wrap center-x bg-blue-dark">
-        <Header typeMenu="sidemenu" headerTitle={'Quizzes'} />
-        <section className="w-100 h-90 wrap center-x">
-          <div className="flex w-100 h-10 overflow-auto txt-gray-light fs-13px rubik-bold">
-              <div>
-                <p className="mx-10px selected">Forex</p>
-              </div>
-              <div>
-                <p className="mx-10px">Stock</p>
-              </div>
-              <div>
-                <p className="mx-10px">Cryptocurrencies</p>
-              </div>
-              <div>
-                <p className="mx-10px">Strategies</p>
-              </div>
-              <div>
-                <p className="mx-10px">Personality</p>
-              </div>
-              <div>
-                <p className="mx-10px">Trivia</p>
-              </div>
-              <div>
-                <p className="mx-10px">Finance</p>
-              </div>
-          </div>
-          <div className="w-100 h-90 center-y">
+        <Header typeMenu="back" headerTitle={this.state.text.header[this.cookies.get('iso')]} />
+        <section className="w-90 h-90 wrap center-x">
+          <div className="w-100 h-100 py-20px b-box">
             <div className="flex w-100 overflow-auto">
               {this.renderElements()}
             </div>

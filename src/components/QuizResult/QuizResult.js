@@ -1,10 +1,27 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Button } from "react-onsenui"
-import MonetizationOnSharpIcon from "@material-ui/icons/MonetizationOnSharp"
+import React from 'react'
+import Cookies from 'universal-cookie'
+import { Link } from 'react-router-dom'
+import { Button } from 'react-onsenui'
+import MonetizationOnSharpIcon from '@material-ui/icons/MonetizationOnSharp'
 import Confetti from 'react-confetti'
 
 const QuizResult = props => {
+  const cookies = new Cookies(),
+    text = {
+      congrats: {
+        es: 'Felicidades',
+        en: 'Congrats'
+      },
+      buttonShare: {
+        es: 'Compartir resultados',
+        en: 'Share result'
+      },
+      buttonHome: {
+        es: 'Ir al inicio',
+        en: 'Go to home'
+      }
+    }
+
   return (
     <main className="w-100 h-100 bg-blue-dark">
       <Confetti />
@@ -16,7 +33,7 @@ const QuizResult = props => {
       <section className="h-33 center-xy">
         <div className="w-85 h-100">
           <ons-row>
-            <h3 className="txt-center w-100 rubik-regular txt-white m-0 p-0 py-5px">Congrats!</h3>
+            <h3 className="txt-center w-100 rubik-regular txt-white m-0 p-0 py-5px">{text.congrats[cookies.get('iso')]}!</h3>
           </ons-row>
           <ons-row>
             <p className="txt-center w-100 rubik-regular txt-gray fs-15px m-0 p-0">{props.params.message}</p>
@@ -27,12 +44,12 @@ const QuizResult = props => {
         <div className="w-85 h-100">
           <div className="w-100 center-x">
             <Button className="round-30px center-xy bg-none border-1px" modifier="large--cta">
-              <MonetizationOnSharpIcon className="mr-10px" />Share Result
-              </Button>
+              <MonetizationOnSharpIcon className="mr-10px" />{text.buttonShare[cookies.get('iso')]}
+            </Button>
           </div>
           <div className="w-100 center-x mt-10px">
-            <Link className="w-100" to={"/Quizzes"}>
-              <Button className="hover-btn round-30px bg-success" modifier="large--cta">Take New Quiz</Button>
+            <Link className="w-100" to={"/Home"}>
+              <Button className="hover-btn round-30px bg-success" modifier="large--cta">{text.buttonHome[cookies.get('iso')]}</Button>
             </Link>
           </div>
         </div>

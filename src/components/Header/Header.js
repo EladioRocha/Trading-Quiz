@@ -13,13 +13,15 @@ class Header extends Component {
     this.state = {
       typeMenu: this.props.typeMenu,
       headerTitle: this.props.headerTitle,
+      path: this.props.path,
       isMenuOpen: false
     }
   }
 
   componentWillReceiveProps = nextProps => {
     this.setState({
-      headerTitle: nextProps.headerTitle
+      headerTitle: nextProps.headerTitle,
+      path: nextProps.path
     })
   }
 
@@ -28,7 +30,7 @@ class Header extends Component {
   }
 
   getMenuByTypeMenuState = () => {
-    const { typeMenu } = this.state
+    let { typeMenu, path } = this.state
     if (!typeMenu || typeMenu === 'sidemenu') {
       return (
         <Toolbar>
@@ -45,10 +47,14 @@ class Header extends Component {
         </Toolbar>
       )
     } else if (typeMenu === 'back') {
+      if(!path) {
+        path = '/Home'
+      }
+
       return (
         <Toolbar>
           <div className="left center-xy">
-            <Link to={"/Quizzes"}>
+            <Link to={path}>
               <ArrowBackIcon className="txt-white center-xy"/>
             </Link>
           </div>

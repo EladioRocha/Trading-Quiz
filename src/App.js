@@ -9,8 +9,12 @@ import EarnCoins from './components/EarnCoins/EarnCoins'
 import Settings from './components/Settings/Settings'
 import Notifications from './components/Notifications/Notifications'
 import Signup from './components/Signup/Signup'
+import Lessons from './components/Lessons/Lessons'
+import LessonLecture from './components/LessonLecture/LessonLecture'
+import Home from './components/Home/Home'
 import ProtectedRoute from './ProtectedRoute'
 import Logged from './Logged'
+
 
 import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
@@ -22,7 +26,8 @@ function App() {
       <Switch>
         <Logged exact path="/" component={Login} />
         <Logged path="/Signup" component={Signup} />
-        <ProtectedRoute path="/Quizzes" component={Quizzes} />
+        <ProtectedRoute path="/Home" component={Home} />
+        <ProtectedRoute path="/Quizzes/:type" component={Quizzes} />
         <ProtectedRoute path="/Quiz" component={Quiz} />
         <ProtectedRoute path="/QuizGame/:quizId" component={QuizGame} />
         <ProtectedRoute path="/QuizResult/:message" component={QuizResult} />
@@ -30,6 +35,8 @@ function App() {
         <ProtectedRoute path="/EarnCoins" component={EarnCoins} />
         <ProtectedRoute path="/Settings" component={Settings} />
         <ProtectedRoute path="/Notifications" component={Notifications} />
+        <ProtectedRoute path="/Lessons/:type" component={Lessons} />
+        <ProtectedRoute path="/LessonLecture/:lessonId" component={LessonLecture} />
         <Route path="*">
           <h1>Resource not found</h1>
         </Route>

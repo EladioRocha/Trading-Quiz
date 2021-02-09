@@ -21,6 +21,11 @@ class Login extends Component {
       typePassworInput: 'password',
       visibleEye: true
     }
+    this.cookies = new Cookies()
+    if(!this.cookies.get('language')) {
+      this.cookies.set('language', 'english')
+      this.cookies.set('iso', 'en')
+    }
   }
 
   login = async () => {
@@ -36,8 +41,10 @@ class Login extends Component {
     })
 
     if(response.success === 1) {
-      const cookies = new Cookies()
-      cookies.set('token', response.data.token, { path: '/' })
+      this.cookies.set('token', response.data.token, { path: '/' })
+      localStorage.setItem('username', response.data.username)
+      localStorage.setItem('email', response.data.email)
+      localStorage.setItem('coins', response.data.coins)
       setTimeout(() => {
         this.setState({
           redirect: true
@@ -59,7 +66,7 @@ class Login extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={`/Quizzes`} />
+      return <Redirect to={`/Home`} />
     }
 
     return (

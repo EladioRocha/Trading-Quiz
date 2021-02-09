@@ -19,8 +19,8 @@ export async function APIUpdateUserData(type, data) {
 }
 
 /** QUIZZES **/
-export async function APIGetQuizzes() {
-  return await handleResponse(axios.get(`${BASE_URL}/v1/quizzes`, setHeaders()))
+export async function APIGetQuizzes(type) {
+  return await handleResponse(axios.get(`${BASE_URL}/v1/quizzes/type/${type}`, setHeaders()))
 }
 export async function APIGetQuestionsQuiz(quizId) {
   return await handleResponse(axios.get(`${BASE_URL}/v1/quizzes/${quizId}`, setHeaders()))
@@ -42,13 +42,26 @@ export async function APICleanViewedNotifications() {
   return await handleResponse(axios.put(`${BASE_URL}/v1/notifications/viewed`, null, setHeaders()))
 }
 
+/** LESSONS **/
+export async function APIGetLessons(type) {
+  return await handleResponse(axios.get(`${BASE_URL}/v1/lessons/type/${type}`, setHeaders()))
+}
+export async function APIGetLesson(lessonId) {
+  return await handleResponse(axios.get(`${BASE_URL}/v1/lessons/${lessonId}`, setHeaders()))
+}
+export async function APIMarkAsReadLesson(lesson) {
+  return await handleResponse(axios.put(`${BASE_URL}/v1/lessons/lecture`, lesson, setHeaders()))
+}
+
 function setHeaders(values = {}) {
   const cookies = new Cookies(),
     headers = {
       ...values,
-      'Authorization': cookies.get('token')
+      Authorization: cookies.get('token'),
+      iso: cookies.get('iso')
     }
 
+  console.log(cookies.get('iso'))
   return {
     headers
   }
