@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Trading-Quiz-Frontend
+
+## Index
+1. [Getting Started with Create React App](#instalation)
+2. [Views](#views)
+
+# Getting Started with Create React App <a name="instalation"></a>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -68,3 +74,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Views <a name="views"></a>
