@@ -154,3 +154,5 @@ When we finished the quiz, it shows us the amount of coin that we earned and app
 ![quizzes section result quiz](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/quizzes-3.png)
 
 The project was made with the intentio of practicing react, nodejs and mongodb concepts. The project is missing things like images
+
+To go to the backend click [here](https://github.com/EladioRocha/Trading-Quiz-Backend)
