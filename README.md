@@ -76,5 +76,81 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ## Views <a name="views"></a>
-**Login page**
-![Login page](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/login.png)
+
+**Login section**
+
+![login section](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/login.png)
+
+**Signup section**
+
+![signup section](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/signup.png)
+
+**Home section**
+
+In this section we can see a navbar with different kind of markets like Forex, Stocks and Cryptocurrencies
+
+![home section](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/home.png)
+
+**Sidebar section**
+
+![sidebar section](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/sidebar.png)
+
+**Leaderboard section**
+
+![leaderboard section](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/leaderboard.png)
+
+**Notifications section**
+
+![notification section](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/notifications.png)
+
+**Settings section - General view**
+
+![settings section general view](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/settings.png)
+
+**Settings section - Change language**
+
+![settings section change language](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/settings-2.png)
+
+**Settings section - Update username**
+
+![settings section update username](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/setting-3.png)
+
+**Lessons section . General view**
+
+In this section we can see all available lectures the meaning of the first lecture with the checkmark is that it has already been studied 
+
+![lessons section general view](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/lessons.png)
+
+**Lessons section - Lecture**
+
+We can see the selected lesson previously
+
+![lessons section lecture](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/lessons-2.png)
+
+**Lessons section - Final lecture**
+
+We can see the last part of the lecture and we can pass to the next lesson
+
+![lessons section final lecture](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/lessons-3.png)
+
+**Lessons section - Passing to next lecture**
+
+![lessons section passing to next lecture](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/lessons-4.png)
+
+**Quizzes section - General view**
+
+![quizes section](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/quizzes.png)
+
+**Quizzes section - Specific quiz**
+
+The idea is to simple we have 15 seconds and we have to select the correct option to complete the sentence
+
+![quizzes section specific quiz](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/quizzes-2.png)
+
+**Quizzes section - Result quiz**
+
+When we finished the quiz, it shows us the amount of coin that we earned and appear a confetti animation
+
+![quizzes section result quiz](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/quizzes-3.png)
+
+The project was made with the intentio of practicing react, nodejs and mongodb concepts. The project is missing things like images
