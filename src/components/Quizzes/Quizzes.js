@@ -27,6 +27,7 @@ class Quizes extends Component {
 
   componentDidMount = async () => {
     const response = await APIGetQuizzes(this.props.params.type)
+    console.log(response)
     this.setState({
       quizzes: response.data.quizzes
     })
@@ -40,8 +41,8 @@ class Quizes extends Component {
           key={quiz._id} 
           quizId={quiz._id} 
           image="https://picsum.photos/200/300" 
-          title={quiz.title[this.cookies.get('iso')]}
-          description={quiz.description[this.cookies.get('iso')]} 
+          title={quiz.title}
+          description={quiz.description} 
           coins={quiz.coins} 
           buttonText={this.state.text.buttonStart[this.cookies.get('iso')]}
           />

@@ -131,7 +131,7 @@ class QuizGame extends Component {
         <section className="w-100 h-90 wrap center-x">
           <div className="w-100 h-5">
             <ons-col width="100%">
-              <p className="w-100 center-x txt-gray rubik-bold fs-13px">{this.state.text.questionsText[this.cookies.get('iso')]} {this.state.totalQuestions - this.state.questions.length + 1}/{this.state.totalQuestions}</p>
+              <p className="w-100 center-x txt-gray rubik-bold fs-13px">{this.state.text.questionsText.en} {this.state.totalQuestions - this.state.questions.length + 1}/{this.state.totalQuestions}</p>
             </ons-col>
           </div>
           <div className="w-100 h-85 center-x">
@@ -144,7 +144,7 @@ class QuizGame extends Component {
                   {
                     this.state.currentAnswers.map(({ _id, answer }) => (
                       <Button key={_id} className="no-white-space center-xy line-h-20px bg-none border-1px hover-btn round-10px mt-10px" modifier="large--cta" onClick={() => this.handleSelectedAnswer(_id)}>
-                        <p className="fs-14px rubik-light txt-wrap txt-normalize m-0 p-0">{answer[this.cookies.get('iso')]}</p>
+                        <p className="fs-14px rubik-light txt-wrap txt-normalize m-0 p-0">{answer.en}</p>
                       </Button>
                     ))
                   }
@@ -166,7 +166,7 @@ class QuizGame extends Component {
                         size={75}
                         strokeWidth={10}
                         isPlaying={this.state.isPlayingTimer}
-                        duration={1000}
+                        duration={15}
                         colors={[["#64ca31"]]}
                         onComplete={this.handleOnCompleteTimer}
                       >

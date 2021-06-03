@@ -43,9 +43,9 @@ class LessonLecture extends Component {
     const response = await APIGetLesson(this.props.params.lessonId)
     this.setState({
       lessonId: response.data.lesson._id,
-      title: response.data.lesson.title,
-      content: parse(response.data.lesson.content),
-      type: response.data.lesson.type,
+      title: response.data.lesson.title.en,
+      content: parse(response.data.lesson.content.en),
+      type: response.data.lesson.type.en,
       nextLessonId: response.data.nextLessonId,
       isLoading: false,
     })
@@ -56,9 +56,9 @@ class LessonLecture extends Component {
       const response = await APIGetLesson(this.props.params.lessonId)
       this.setState({
         lessonId: response.data.lesson._id,
-        title: response.data.lesson.title,
-        content: parse(response.data.lesson.content),
-        type: response.data.lesson.type,
+        title: response.data.lesson.title.en,
+        content: parse(response.data.lesson.content.en),
+        type: response.data.lesson.type.en,
         nextLessonId: response.data.nextLessonId,
         isLoading: false,
       })
