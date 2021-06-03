@@ -76,3 +76,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ## Views <a name="views"></a>
+**Login page**
+![Login page](https://github.com/EladioRocha/Trading-Quiz-Frontend/blob/main/examples/login.png)
